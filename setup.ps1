@@ -19,7 +19,7 @@ Write-Host "=================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "1. Alles installeren"
 Write-Host "2. Zelf kiezen"
-Write-Host "3. Alles downloaden naar C:\RobinSetup"
+Write-Host "3. Alles downloaden naar C:\Setup"
 Write-Host ""
 
 $choice = Read-Host "Maak een keuze"
