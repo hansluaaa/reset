@@ -1,8 +1,13 @@
 Clear-Host
 Write-Host "=================================" -ForegroundColor Cyan
-Write-Host "      Robin Setup Tool" -ForegroundColor Cyan
-Write-Host "=================================" -ForegroundColor Cyan
+Write-Host "       Hans Setup Tool"
+Write-Host "================================="
 Write-Host ""
+Write-Host "1. Installeer alles"
+Write-Host "2. Kies zelf"
+Write-Host ""
+
+$choice = Read-Host "Maak een keuze (1/2)"
 
 $apps = @{
     "Discord"           = "Discord.Discord"
@@ -16,18 +21,28 @@ $apps = @{
     "ReShade"           = "Reshade.Setup"
 }
 
-foreach ($app in $apps.Keys) {
-    $answer = Read-Host "Wil je $app installeren? (Y/N)"
-
-    if ($answer -match "^[Yy]$") {
-        Write-Host "Installeren van $app..." -ForegroundColor Yellow
-
-        winget install --id $apps[$app] -e `
+if ($choice -eq "1") {
+    foreach ($app in $apps.Values) {
+        winget install --id $app -e `
             --accept-package-agreements `
             --accept-source-agreements
     }
 }
+elseif ($choice -eq "2") {
+    foreach ($app in $apps.Keys) {
+        $answer = Read-Host "Wil je $app installeren? (Y/N)"
+
+        if ($answer -match "^[Yy]$") {
+            winget install --id $apps[$app] -e `
+                --accept-package-agreements `
+                --accept-source-agreements
+        }
+    }
+}
+else {
+    Write-Host "Ongeldige keuze."
+}
 
 Write-Host ""
-Write-Host "Alle geselecteerde programma's zijn geïnstalleerd!" -ForegroundColor Green
+Write-Host "Klaar!" -ForegroundColor Green
 Pause
