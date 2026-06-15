@@ -36,7 +36,7 @@ function Download-Configs {
 }
 
 Write-Host "=================================" -ForegroundColor Cyan
-Write-Host "       Robin Setup Tool" -ForegroundColor Cyan
+Write-Host "       Hans Tool" -ForegroundColor Cyan
 Write-Host "=================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "1. Alles installeren"
